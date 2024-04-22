@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 77 57 159;
+    --color-primary-bright: 124 93 251;
+    --color-success: 77 201 112;
+    --color-danger: 255 98 98;
+    --color-background: 243 244 246;
+
+    --color-gray-text: 107 114 128;
+    --color-table-header: 249 250 251;
+    --color-table-border: 229 231 235;
+
+    --sidebar-width: 84px;
+    --font-primary: "Inter";
+  }
+}
