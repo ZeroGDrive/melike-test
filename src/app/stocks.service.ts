@@ -22,8 +22,12 @@ export class StocksService {
   getStocksData() {
     return combineLatest([
       this.search$,
-      timer(0, 10000).pipe(
-        switchMap(() => this.#httpClient.get<Stock[]>('assets/data.json')),
+      timer(0, 5000).pipe(
+        switchMap(() =>
+          this.#httpClient
+            .get<Stock[]>('assets/data.json')
+            .pipe(map(this.randomizeData)),
+        ),
       ),
     ]).pipe(
       map(([search, data]) =>
@@ -32,5 +36,20 @@ export class StocksService {
         ),
       ),
     );
+  }
+
+  randomizeData(stocks: Stock[]): Stock[] {
+    return stocks.map((stock) => {
+      // changePercentage should be random and from -100 to 100
+      const changePercentage = (Math.random() * 200 - 100) / 100;
+
+      return {
+        ...stock,
+        price: stock.price + (Math.random() - 0.5) * 10,
+        changePercentage,
+        // changeToday should have the same sign as changePercentage and should be random
+        changeToday: Math.sign(changePercentage) * Math.random() * 10,
+      };
+    });
   }
 }
