@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  HostListener,
   effect,
   model,
   viewChild,
@@ -19,7 +20,14 @@ import { MlButtonComponent } from '../ml-button/ml-button.component';
 })
 export class StockDialogComponent {
   dialogElement = viewChild<ElementRef<HTMLDialogElement>>('dialog');
+
   stock = model<Stock | null>(null);
+
+  @HostListener('click', ['$event.target']) onDialogClick(event: any) {
+    if (event === this.dialogElement()?.nativeElement) {
+      this.close();
+    }
+  }
 
   openModal = effect(() => {
     if (this.stock()) {

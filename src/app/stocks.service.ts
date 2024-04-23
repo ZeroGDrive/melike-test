@@ -20,17 +20,16 @@ export class StocksService {
   search$ = new BehaviorSubject<string>('');
 
   getStocksData() {
-    return combineLatest([this.search$, timer(0, 10000)]).pipe(
-      switchMap(([search]) =>
-        this.#httpClient
-          .get<Stock[]>('assets/data.json')
-          .pipe(
-            map((stocks) =>
-              stocks.filter((stock) =>
-                stock.target.toLowerCase().includes(search.toLowerCase()),
-              ),
-            ),
-          ),
+    return combineLatest([
+      this.search$,
+      timer(0, 10000).pipe(
+        switchMap(() => this.#httpClient.get<Stock[]>('assets/data.json')),
+      ),
+    ]).pipe(
+      map(([search, data]) =>
+        data.filter((stock) =>
+          stock.target.toLowerCase().includes(search.toLowerCase()),
+        ),
       ),
     );
   }
