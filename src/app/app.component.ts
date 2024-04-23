@@ -7,6 +7,5 @@ import { DiscoverPageComponent } from './discover-page/discover-page.component';
   standalone: true,
   imports: [SideBarComponent, DiscoverPageComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent {}
