@@ -1,20 +1,20 @@
-<table class="size-full table-auto">
+<table class="size-full min-w-fit table-auto">
   <thead>
     <tr
       class="border-y border-y-[rgb(var(--color-table-border))] bg-[rgb(var(--color-table-header))]"
     >
       <th
-        class="text-gray-text px-[30px] py-[15px] text-start text-sm font-semibold"
+        class="px-[30px] py-[15px] text-start text-sm font-semibold text-gray-text"
       >
         Name
       </th>
       <th
-        class="text-gray-text px-[30px] py-[15px] text-start text-sm font-semibold"
+        class="px-[30px] py-[15px] text-start text-sm font-semibold text-gray-text"
       >
         Change Today
       </th>
       <th
-        class="text-gray-text px-[30px] py-[15px] text-start text-sm font-semibold"
+        class="px-[30px] py-[15px] text-start text-sm font-semibold text-gray-text"
       >
         Price
       </th>
@@ -22,48 +22,71 @@
     </tr>
   </thead>
 
-  <tbody>
-    <tr>
-      <td class="px-[30px] py-[13px]">
-        <div class="flex gap-[15px]">
-          <div class="relative size-[37px]">
-            <img
-              src="assets/images/vanguard.png"
-              alt="Vanguard logo"
-              class="absolute size-full object-contain"
-            />
+  <tbody class="">
+    @for (stock of stocks(); track stock.id) {
+      <tr
+        class="cursor-pointer hover:bg-[rgb(var(--color-table-header))]"
+        (click)="onRowClick(stock)"
+      >
+        <td class="px-[30px] py-[13px]">
+          <div class="flex gap-[15px]">
+            <div class="relative size-[37px]">
+              <img
+                [src]="'assets/images/' + stock?.logo + '.png'"
+                alt="Target logo"
+                class="absolute size-full object-contain"
+              />
+            </div>
+
+            <div>
+              <p class="font-medium leading-[21px]">{{ stock?.target }}</p>
+              <span class="text-sm font-medium leading-[16px] text-gray-text">{{
+                stock?.emblem
+              }}</span>
+            </div>
           </div>
+        </td>
 
-          <div>
-            <p class="font-medium leading-[21px]">Vanguard S&P 500 Etf</p>
-            <span class="text-gray-text text-sm font-medium leading-[16px]"
-              >VOO</span
-            >
+        <td class="px-[30px] py-[13px]">
+          <p
+            class="text-sm font-semibold leading-[17px]"
+            [ngClass]="
+              stock.changePercentage > 0
+                ? 'text-success'
+                : stock.changePercentage < 0
+                  ? 'text-danger'
+                  : 'text-gray-text'
+            "
+          >
+            {{ stock?.changeToday | currency }}
+          </p>
+          <span
+            class="text-xs font-semibold leading-[15px]"
+            [ngClass]="
+              stock.changePercentage > 0
+                ? 'text-success'
+                : stock.changePercentage < 0
+                  ? 'text-danger'
+                  : 'text-gray-text'
+            "
+            >({{ stock.changePercentage > 0 ? "+" : ""
+            }}{{ stock?.changePercentage | percent: "1.2-2" }})</span
+          >
+        </td>
+
+        <td class="px-[30px] py-[13px]">
+          <p class="text-sm font-semibold leading-[17px] text-gray-text">
+            {{ stock?.price | currency }}
+          </p>
+        </td>
+
+        <td class="px-[30px] py-[13px]">
+          <div class="flex h-[38px] gap-[15px]">
+            <app-ml-button variant="buy">Buy</app-ml-button>
+            <app-ml-button variant="sell">Sell</app-ml-button>
           </div>
-        </div>
-      </td>
-
-      <td class="px-[30px] py-[13px]">
-        <p class="text-success text-sm font-semibold leading-[17px]">
-          {{ 2.62 | currency }}
-        </p>
-        <span class="text-success text-xs font-semibold leading-[15px]"
-          >(+{{ 0.0057 | percent: "1.0-2" }})</span
-        >
-      </td>
-
-      <td class="px-[30px] py-[13px]">
-        <p class="text-gray-text text-sm font-semibold leading-[17px]">
-          {{ 462.61 | currency }}
-        </p>
-      </td>
-
-      <td class="px-[30px] py-[13px]">
-        <div class="flex h-[38px] gap-[15px]">
-          <app-ml-button variant="buy">Buy</app-ml-button>
-          <app-ml-button variant="sell">Sell</app-ml-button>
-        </div>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    }
   </tbody>
 </table>

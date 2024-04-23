@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "target": "Vanguard S&P 500 Etf",
+    "logo": "vanguard",
+    "emblem": "VOO",
+    "changeToday": 2.62,
+    "changePercentage": 0.0057,
+    "price": 462.61
+  },
+  {
+    "id": 2,
+    "target": "Telo Genomics Corp",
+    "logo": "telo",
+    "emblem": "TELO",
+    "changeToday": 4.23,
+    "changePercentage": 0,
+    "price": 4.23
+  },
+  {
+    "id": 3,
+    "target": "Asmi Holding Nv",
+    "logo": "asmi",
+    "emblem": "ASML",
+    "changeToday": -12.4,
+    "changePercentage": -0.0145,
+    "price": 840
+  },
+  {
+    "id": 4,
+    "target": "Apple Inc",
+    "logo": "apple",
+    "emblem": "AAPL",
+    "changeToday": 0.22,
+    "changePercentage": 0.0013,
+    "price": 840
+  },
+  {
+    "id": 5,
+    "target": "Nvidia Corporation",
+    "logo": "nvidia",
+    "emblem": "NVDA",
+    "changeToday": 13.66,
+    "changePercentage": 0.0163,
+    "price": 854.01
+  },
+  {
+    "id": 6,
+    "target": "Tesla Motors Inc.",
+    "logo": "tesla",
+    "emblem": "TSLA",
+    "changeToday": -4.43,
+    "changePercentage": -0.0285,
+    "price": 151.02
+  },
+  {
+    "id": 7,
+    "target": "Taiwan Semiconductor Manufacturing",
+    "logo": "tsmc",
+    "emblem": "TSM",
+    "changeToday": -5.18,
+    "changePercentage": -0.0373,
+    "price": 133.85
+  },
+  {
+    "id": 8,
+    "target": "Direxion Daily China Bull",
+    "logo": "direxion",
+    "emblem": "TSM",
+    "changeToday": 1.0,
+    "changePercentage": 0.0559,
+    "price": 18.9
+  },
+  {
+    "id": 9,
+    "target": "Ethereum Tracker",
+    "logo": "ethereum",
+    "emblem": "XBTE",
+    "changeToday": 9.26,
+    "changePercentage": 0.0358,
+    "price": 267.81
+  },
+  {
+    "id": 10,
+    "target": "Blackrock Capital Allocation Trust",
+    "logo": "blackrock",
+    "emblem": "BCAT",
+    "changeToday": 0.29,
+    "changePercentage": 0.0038,
+    "price": 76.1
+  }
+]

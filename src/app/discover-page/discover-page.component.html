@@ -9,11 +9,17 @@
   </div>
 
   <div
-    class="mt-[22px] size-full rounded-[15px] bg-white drop-shadow-[0_0_30px_rgba(0,0,0,0.05)]"
+    class="mt-[22px] size-full overflow-x-auto rounded-[15px] bg-white drop-shadow-[0_0_30px_rgba(0,0,0,0.05)]"
   >
     <div class="px-[30px] pb-[20px] pt-[30px]">
-      <input class="" />
+      <app-ml-search-input [(search)]="search" />
     </div>
-    <app-ml-table />
+    @if (stocksLive$ | async; as stocks) {
+      <app-ml-table [stocks]="stocks" (rowClick)="selectedStock.set($event)" />
+    } @else {
+      <!-- <app-ml-loading /> -->
+    }
   </div>
 </div>
+
+<app-stock-dialog [(stock)]="selectedStock" />

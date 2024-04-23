@@ -1,0 +1,61 @@
+@if (stock()) {
+  <dialog
+    #dialog
+    class="backdrop:bg-background-dialog/40 open:animate-fade-in flex w-full max-w-[432px] flex-col gap-[30px] rounded-[15px] px-[30px] pb-[29px] pt-[20px]"
+  >
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl font-semibold leading-6">
+        {{ stock()?.target ? stock()!.target.split(" ")[0] : "Target" }}
+      </h1>
+      <button
+        (click)="close()"
+        class="focus:shadow-outline size-5 focus:outline-none"
+      >
+        <img
+          src="assets/icons/close.svg"
+          alt="Close"
+          class="size-full object-cover"
+        />
+      </button>
+    </div>
+
+    <div class="flex items-end justify-between">
+      <div class="flex flex-col gap-1">
+        <p class="font-semibold leading-5">{{ stock()?.target }}</p>
+        <span class="font-medium leading-5 text-gray-text">{{
+          stock()?.emblem
+        }}</span>
+      </div>
+
+      <div class="flex flex-col items-center gap-1">
+        <p class="text-xl font-semibold leading-6">
+          {{ stock()?.price | currency }}
+        </p>
+
+        @if (stock()) {
+          <span
+            class="text-sm font-semibold leading-[17px]"
+            [ngClass]="
+              stock()!.changePercentage > 0
+                ? 'text-success'
+                : stock()!.changePercentage < 0
+                  ? 'text-danger'
+                  : 'text-gray-text'
+            "
+            >({{ stock()!.changePercentage > 0 ? "+" : ""
+            }}{{ stock()!.changePercentage | percent: "1.2-2" }})</span
+          >
+        }
+      </div>
+    </div>
+
+    <div class="w-full">
+      <div class="h-[48px]">
+        <app-ml-button variant="buy">Buy</app-ml-button>
+      </div>
+      <div class="mt-[10px] h-[48px]">
+        <app-ml-button variant="sell">Sell</app-ml-button>
+      </div>
+    </div>
+  </dialog>
+}

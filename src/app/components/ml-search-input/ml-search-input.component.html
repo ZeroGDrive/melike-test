@@ -1,0 +1,23 @@
+<div class="relative">
+  <span class="absolute inset-y-0 left-0 flex items-center pl-[15px]">
+    <button
+      type="submit"
+      class="focus:shadow-outline absolute size-5 focus:outline-none"
+    >
+      <img
+        src="assets/icons/search.svg"
+        alt="Search"
+        class="size-full object-contain"
+      />
+    </button>
+  </span>
+
+  <input
+    type="text"
+    [(ngModel)]="search"
+    name="q"
+    class="h-[38px] rounded-lg border border-[rgb(var(--color-input-border))] bg-[rgb(var(--color-table-header))] pl-11 text-sm text-gray-900 placeholder:text-[rgb(var(--color-input-placeholder))] focus:outline-none"
+    placeholder="Search here"
+    autocomplete="off"
+  />
+</div>

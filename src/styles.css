@@ -10,12 +10,20 @@
     --color-success: 77 201 112;
     --color-danger: 255 98 98;
     --color-background: 243 244 246;
-
+    --color-text-primary: 31 42 55;
     --color-gray-text: 107 114 128;
     --color-table-header: 249 250 251;
     --color-table-border: 229 231 235;
-
+    --color-input-border: 209 213 219;
+    --color-input-placeholder: 156 163 175;
+    --color-dialog-backdrop: 33 29 51;
     --sidebar-width: 84px;
     --font-primary: "Inter";
   }
+}
+
+html,
+body,
+dialog {
+  color: rgb(var(--color-text-primary));
 }
